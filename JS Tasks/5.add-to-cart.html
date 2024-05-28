@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Add to Cart</title>
+</head>
+<body>
+    <center>
+    <!-- <div class="container"> -->
+        <h2>Add to Cart</h2>
+        <table id="myTable" class="table" border="2px" width="70%">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Name</th>
+                    <th>Qty</th>
+                    <th>Price</th>
+                    <th>
+                        <span id="amount" class="amount">Amount</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td  align="center">
+                        <div class="product-img">
+                            <div class="img-prdct">
+                                <img src="images/Smart-Tab.jpg" alt="" width="170px">
+                            </div>
+                        </div>
+                    </td>
+                    <td><p align="center">Smart Tablet</p></td>
+                    <td  align="center">
+                        <div class="button-container">
+                            <button class="cart-qty-plus" type="button" value="+">+</button>
+                            <input type="text" name="qty" min="0" class="qty form-control" value="0"/>
+                            <button class="cart-qty-minus" type="button" value="-">-</button>
+                        </div>
+                    </td>
+                    <td  align="center">
+                        <input type="text" value="15000" class="price form-control" disabled>
+                    </td>
+                    <td align="center"><span id="amount" class="amount">0</span></td>
+                </tr>
+
+                <tr>
+                    <td  align="center">
+                        <div class="product-img">
+                            <div class="img-prdct">
+                                <img src="images/smart-watch.jpg" alt="" width="170px">
+                            </div>
+                        </div>
+                    </td>
+                    <td><p align="center">Smart Watch</p></td>
+                    <td  align="center">
+                        <div class="button-container">
+                            <button class="cart-qty-plus" type="button" value="+">+</button>
+                            <input type="text" name="qty" min="0" class="qty form-control" value="0"/>
+                            <button class="cart-qty-minus" type="button" value="-">-</button>
+                        </div>
+                    </td>
+                    <td  align="center">
+                        <input type="text" value="5000" class="price form-control" disabled>
+                    </td>
+                    <td align="center"><span id="amount" class="amount">0</span></td>
+                </tr>
+
+                <tr>
+                    <td  align="center">
+                        <div class="product-img">
+                            <div class="img-prdct">
+                                <img src="images/led-tv.jpg" alt="" width="170px">
+                            </div>
+                        </div>
+                    </td>
+                    <td><p align="center">LED Tv</p></td>
+                    <td  align="center">
+                        <div class="button-container">
+                            <button class="cart-qty-plus" type="button" value="+">+</button>
+                            <input type="text" name="qty" min="0" class="qty form-control" value="0"/>
+                            <button class="cart-qty-minus" type="button" value="-">-</button>
+                        </div>
+                    </td>
+                    <td  align="center">
+                        <input type="text" value="50000" class="price form-control" disabled>
+                    </td>
+                    <td align="center"><span id="amount" class="amount">0</span></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4" align="center"><strong>TOTAL</strong></td>
+                    <td align="center">
+                        <strong><span id="total" class="total">0</span></strong>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    <!-- </div> -->
+</center>
+
+<script>
+
+    function update_amounts(){
+        var sum = 0.0;
+
+        $('#myTable > tbody > tr').each(function(){
+            var qty = $(this).find('.qty').val();
+            var price = $(this).find('.price').val();
+            var amount = (qty*price)
+            sum+=amount;
+            $(this).find('.amount').text(''+amount);
+        });
+        $('.total').text(sum);
+    }
+
+    var incrementQty;
+    var decrementQty;
+    var plusBtn = $(".cart-qty-plus");
+    var minusBtn = $(".cart-qty-minus");
+
+    var incrementQty = plusBtn.click(function(){
+        var $n = $(this).parent(".button-container").find(".qty");
+        $n.val(Number($n.val())+1);
+        update_amounts();
+    });
+
+    var decrementQty = minusBtn.click(function(){
+        var $n = $(this).parent(".button-container").find(".qty");
+       
+        var QtyVal = Number($n.val());
+        if(QtyVal > 0){
+            $n.val(QtyVal-1);
+        }
+        update_amounts();
+    });
+    
+</script>
+</body>
+</html>

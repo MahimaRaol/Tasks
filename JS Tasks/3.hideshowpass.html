@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hide & Show Password</title>
+</head>
+<body>
+    <center>
+        <br><br><br>
+        <h1>Hide & Show Password</h1>
+        <div>
+            <input type="password" id="password">
+            <button type="button" onclick="toggle(this)">Show Password</button>
+        </div> 
+    </center>
+
+<script>
+
+        var pass = document.getElementById('password');
+        function toggle(elem){
+
+            var type = password.getAttribute('type');
+
+            if(type == 'password'){
+                password.setAttribute('type','text');
+                elem.innerText = "Hide Password";
+            }else{
+                password.setAttribute('type','password');
+                elem.innerText = "Show Password";
+            }
+           
+        }
+    
+</script>
+   
+</body>
+</html>

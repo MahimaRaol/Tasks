@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validation</title>
+    <style>
+        .error-message {
+            color: red;
+        }
+        .success-message {
+            color: green;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            var firstName = document.getElementById('firstName').value;
+            var lastName = document.getElementById('lastName').value;
+            var firstNameError = document.getElementById('firstNameError');
+            var lastNameError = document.getElementById('lastNameError');
+            var successMessage = document.getElementById('successMessage');
+            var isValid = true;
+
+            // Reset previous error messages
+            firstNameError.textContent = "";
+            lastNameError.textContent = "";
+            successMessage.textContent = "";
+
+            // Validate first name
+            if (firstName === "") {
+                firstNameError.textContent = "Please enter your first name";
+                isValid = false;
+            }
+
+            // Validate last name
+            if (lastName === "") {
+                lastNameError.textContent = "Please enter your last name";
+                isValid = false;
+            }
+
+            if (isValid) {
+                successMessage.textContent = "Form submitted successfully!";
+            }
+
+            return isValid;
+        }
+    </script>
+</head>
+<body>
+    <center>
+        <h1>Simple Form Validation</h1>
+        <form onsubmit="return validateForm()">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName">
+            <span id="firstNameError" class="error-message"></span><br><br>
+
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName">
+            <span id="lastNameError" class="error-message"></span><br><br>
+
+            <input type="submit" value="Submit">
+            <span id="successMessage" class="success-message"></span>
+        </form>
+    </center>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength</title>
+</head>
+<body>
+    <center>
+        <br><br><br><br>
+        <h1>Show Password Strength</h1>
+        <input type="password" onkeyup="strength();" id="pass" placeholder="Enter Password"><br><br>
+        <span id="msg"></span>
+    </center>
+    <script>
+        function strength(){
+            var pass = document.getElementById("pass");
+            var msg = document.getElementById("msg");
+
+            if(pass.value.trim().length<4){
+                msg.innerHTML = " Password is Weak";
+                msg.style.color = "red";
+                pass.style.outline = "2px solid red";
+                pass.style.border = "none";
+            }
+            if(pass.value.trim().length>=5){
+                msg.innerHTML = " Password is Medium";
+                msg.style.color = "orange";
+                pass.style.outline = "2px solid orange";
+                pass.style.border = "none";
+            }
+            if(pass.value.trim().length>=8){
+                msg.innerHTML = " Password is Strong";
+                msg.style.color = "green";
+                pass.style.outline = "2px solid green";
+                pass.style.border = "none";
+            }
+        }
+    </script>
+</body>
+</html>

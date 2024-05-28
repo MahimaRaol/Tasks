@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validation</title>
+    <style>
+        .error-message {
+            color: red;
+        }
+        .success-message {
+            color: green;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            var firstName = document.getElementById('firstName').value;
+            var lastName = document.getElementById('lastName').value;
+            var dropdown = document.getElementById('dropdown').value;
+            var maleRadioButton = document.getElementById('male');
+            var femaleRadioButton = document.getElementById('female');
+            var hobbiesCheckboxes = document.getElementsByName('hobbies');
+
+            var firstNameError = document.getElementById('firstNameError');
+            var lastNameError = document.getElementById('lastNameError');
+            var dropdownError = document.getElementById('dropdownError');
+            var genderError = document.getElementById('genderError');
+            var hobbiesError = document.getElementById('hobbiesError');
+
+            var successMessage = document.getElementById('successMessage');
+            var isValid = true;
+
+            // Reset previous error messages
+            firstNameError.textContent = "";
+            lastNameError.textContent = "";
+            dropdownError.textContent = "";
+            genderError.textContent= "";
+            hobbiesError.textContent = "";
+            successMessage.textContent = "";
+
+
+
+            // Validate Hobby
+            var checkedCount = 0;
+            for (var i = 0; i < hobbiesCheckboxes.length; i++) {
+                if (hobbiesCheckboxes[i].checked) {
+                checkedCount++;
+                }
+            }
+            
+            if (checkedCount === 0) {
+                hobbiesError.textContent = "Please select at least one hobby.";
+                isValid = false;
+            } else {
+                hobbiesError.textContent = ''; 
+            }
+
+            
+            // Validate first name
+            if (firstName === "") {
+                firstNameError.textContent = "Please enter your first name";
+                isValid = false;
+            }
+
+            // Validate last name
+            if (lastName === "") {
+                lastNameError.textContent = "Please enter your last name";
+                isValid = false;
+            }
+
+            //Validate Dropdown Menu
+            if (dropdown === "") {
+                dropdownError.textContent = "Please select an option.";
+                isValid = false;
+            } else {
+                dropdownError.textContent = '';
+            }
+
+            //Validate gender
+            if (!maleRadioButton.checked && !femaleRadioButton.checked) {
+                genderError.textContent = 'Please select a gender.';
+                return false; 
+            }else {
+                genderError.textContent = '';
+            }
+
+            //success message
+            if (isValid) {
+                successMessage.textContent = "Form submitted successfully!";
+            }
+            return isValid;
+        }
+    </script>
+</head>
+<body>
+    <center>
+        <h1>Advance Form Validation</h1>
+
+        <form onsubmit="return validateForm()">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName">
+            <span id="firstNameError" class="error-message"></span><br><br>
+
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName">
+            <span id="lastNameError" class="error-message"></span><br><br>
+
+            <label for="dropdown">Select an option:</label>
+            <select id="dropdown" name="dropdown">
+              <option value="">Please select...</option>
+              <option value="option1">Option 1</option>
+              <option value="option2">Option 2</option>
+              <option value="option3">Option 3</option>
+            </select>
+            <span id="dropdownError" class="error-message"></span><br><br>
+
+            <label>Gender:</label>
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label>
+            <span id="genderError" class="error-message"></span><br><br>
+
+            <label>Select your hobbies:</label>
+            <input type="checkbox" id="hobby1" name="hobbies" value="hobby1">
+            <label for="hobby1">Net Surffing</label>
+            <input type="checkbox" id="hobby2" name="hobbies" value="hobby2">
+            <label for="hobby2">Gardening</label>
+            <input type="checkbox" id="hobby3" name="hobbies" value="hobby3">
+            <label for="hobby3">Reading Books</label><br>
+            <span id="hobbiesError" class="error-message"></span><br>
+
+            <input type="submit" value="Submit">
+            <span id="successMessage" class="success-message"></span>
+        </form>
+    </center>
+</body>
+</html>

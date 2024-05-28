@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password & Confirm Password</title>
+</head>
+<body>
+    <center>
+        <br><br><br>
+        <h1>Password & Confirm Password</h1>
+        <form onsubmit="return data()" action="" >
+            Password:<input type="password" id="pass1"><br><br>
+            Confirm Password<input type="password" name="" id="pass2"><br><br>
+            <input type="submit" name="" id="">
+        </form>
+    </center>
+
+    <script>
+        function data(){
+            var a = document.getElementById("pass1").value;
+            var b = document.getElementById("pass2").value;
+
+            if(a==""||b==""){
+                alert("all fields are mendatory");
+                return false;
+            }
+            else if(a!=b){
+                alert("please enter same password");
+                return false;
+            }
+            else{
+                alert("Submitted Successfully ");
+                true;
+            }
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Time Out</title>
+</head>
+<body><br><br><br>
+    <center>
+        <h3 id="timeOut">Sorry! your time is out.</h3>
+        <input type="password" placeholder="Enter your Password" id="password" />
+      <button id="button">SUBMIT</button>
+      <p id="time">You have <span id="seconds"></span> Seconds!</p>
+    </center>
+
+    <script>
+        counter = setInterval(countdown);
+        upto = 1000;
+
+        function countdown() {
+        var count = (document.getElementById("seconds").innerHTML = --upto);
+        if (upto == 0) {
+            clearInterval(counter);
+        }
+        }
+
+        document.getElementById("timeOut").style.display = "none";
+
+        setTimeout(() => {
+        document.getElementById("timeOut").style.display = "block";
+        document.getElementById("password").style.display = "none";
+        document.getElementById("button").style.display = "none";
+        document.getElementById("time").style.display = "none";
+        }, 5000);
+    </script>
+</body>
+</html>
